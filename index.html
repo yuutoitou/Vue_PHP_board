@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nekonohito">
+  <meta property="og:url" content="https://www.econa-life.com/index.php" /> <!--③-->
+  <meta property="og:title" content="Ecoな掲示板" /> <!--④-->
+  <meta property="og:description" content="ポートフォリオ用の掲示板アプリです。phpで作成しました。" /> <!--⑤-->
+<meta property="og:image" content="https://www.econa-life.com/upload/images.jpg" /> <!--⑥-->
+
+  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="example" v-on:scroll="loadheight" v-cloak>
+<header v-bind:class="{'fixed':windowHeight > 70}">
+  <h1 v-on:click="main_counter = 0">ECOna</h1>
+    <my-nav-p></my-nav-p>
+</header>
+<div id="container">
+<transition name="form-box">  
+<p class="jobmess" v-if="jobcount === 1">{{jobmes}}</p>  
+<my-new-user v-if="counter === 1"></my-new-user>
+<my-login v-if="counter === 2"></my-login>
+<my-post v-if="counter === 3"></my-post>
+<my-edit v-if="counter === 4"></my-edit>
+<my-comment v-if="counter === 5"></my-comment>
+<my-mail v-if="counter === 9"></my-mail>  
+<my-plofile-edit v-if="counter === 6"></my-plofile-edit>
+<my-new-pass v-if="counter === 7"></my-new-pass>
+<my-withdraw v-if="counter === 8"></my-withdraw>
+<my-comment-show v-if="counter === 10"></my-comment-show>
+</transition>
+  <div v-if="main_counter === 0">
+      <my-post-show></my-post-show>
+  </div>
+<transition name="post-index">  
+  <my-profile v-if="main_counter === 1"></my-profile>
+</transition>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>  
+<script type="text/javascript" src="main.js"></script>
+</body>  
+</html>
